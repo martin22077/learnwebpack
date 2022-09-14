@@ -1,0 +1,5 @@
+$bgcolor: rgb(46, 119, 153);
+
+html, body {
+    background-color: lighten($bgcolor, 30%);
+}

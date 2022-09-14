@@ -5,10 +5,10 @@ const glob = require('glob');
 
 let htmlPlugins = [];
 
-let files = glob.sync('./src/views/*.html');
+let files = glob.sync('./src/views/*.twig');
 files.forEach(file => {
   let htmlPlugin = new HtmlWebpackPlugin({
-    filename: file.split('/').at(-1),
+    filename: file.split('/').at(-1).replace('twig','html'),
     template: file
   });
   htmlPlugins.push(htmlPlugin);
@@ -39,6 +39,15 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.twig$/,
+        use: {
+          loader: 'twig-loader',
+          options: {
+              // See options section below
+          },
+        }
       },
     ],
   },
