@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/martin22077/learnwebpack.git"
+    "url": "git+https://github.com/martin22077/learnwebpack"
   },
   "keywords": [],
   "author": "Martin",
@@ -20,19 +20,25 @@
     "url": "https://github.com/martin22077/learnwebpack/issues"
   },
   "homepage": "https://github.com/martin22077/learnwebpack#readme",
+  "dependencies": {
+    "twig-loader": "^0.5.5",
+    "vue-router": "^4.1.5",
+    "webpack": "^5.74.0"
+  },
   "devDependencies": {
+    "bulma": "^0.9.4",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
+    "purgecss-webpack-plugin": "^5.0.0",
     "sass": "^1.54.9",
     "sass-loader": "^13.0.2",
     "style-loader": "^3.3.1",
     "surge": "^0.23.1",
-    "webpack": "^5.74.0",
+    "vue": "^3.2.39",
+    "vue-loader": "^17.0.0",
+    "vue-template-compiler": "^2.7.10",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.0"
-  },
-  "dependencies": {
-    "twig-loader": "^0.5.5"
   }
 }

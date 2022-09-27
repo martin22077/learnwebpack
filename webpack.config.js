@@ -1,21 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
-const glob = require('glob');
-
-let htmlPlugins = [];
-
-let files = glob.sync('./src/views/*.twig');
-files.forEach(file => {
-  let htmlPlugin = new HtmlWebpackPlugin({
-    filename: file.split('/').at(-1).replace('twig','html'),
-    template: file
-  });
-  htmlPlugins.push(htmlPlugin);
-});
-
-
-
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   entry: './src/index.js',
@@ -41,18 +27,21 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
-        test: /\.twig$/,
-        use: {
-          loader: 'twig-loader',
-          options: {
-              // See options section below
-          },
-        }
-      },
+        test: /\.vue$/i,
+        use: ["vue-loader"],
+      }
     ],
   },
   plugins: [
-    ...htmlPlugins,
-    new MiniCssExtractPlugin()
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new MiniCssExtractPlugin(),
+    new VueLoaderPlugin(),
   ],
+  resolve: {
+    alias: {
+      vue:'vue/dist/vue.esm-bundler.js'
+    }
+  }
 };

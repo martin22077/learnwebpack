@@ -1,4 +1,7 @@
-$bgcolor: rgb(46, 119, 153);
+
+@import "../node_modules/bulma/bulma.sass";
+$primary: rgb(130, 199, 226);
+$bgcolor: rgb(50, 199, 204);
 
 html, body {
     background-color: lighten($bgcolor, 30%);
